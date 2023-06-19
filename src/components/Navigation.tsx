@@ -5,7 +5,6 @@ import { atom, useRecoilState } from "recoil";
 import { useEffect } from "react";
 import SearchInput from "./SearchInput";
 import { totalQuantityState } from "../store/cartStat";
-import { CartContext } from "./CartContext";
 
 const themeState = atom({
   key: "themeState",
@@ -126,12 +125,10 @@ const Navigation = () => {
               <button className="btn join-item">Search</button>
             </div>
           </div>
-          <CartContext.Provider value={{ totalQuantity, setTotalQuantity }}>
-            <Link to="/cart" className={styled.cart}>
-              <div className={styled.badge}>{totalQuantity}</div>
-              <BsFillBasket3Fill />
-            </Link>
-          </CartContext.Provider>
+          <Link to="/cart" className={styled.cart}>
+            <div className={styled.badge}>{totalQuantity}</div>
+            <BsFillBasket3Fill />
+          </Link>
         </div>
       </div>
     </div>
