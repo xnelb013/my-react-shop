@@ -38,8 +38,6 @@
 
 .categoryContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .categoryContainer a,
@@ -94,6 +92,7 @@
 .cart {
   font-size: 25px;
   position: relative;
+  padding-right: 20px;
 }
 
 .hamburger {
@@ -106,14 +105,10 @@
   font-weight: 800;
 }
 
-.themeBtn {
-  font-size: 0.5rem;
-}
-
 .navbarWrap {
   max-width: 1460px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 5fr 5fr;
   margin: 0 auto;
 }
 
@@ -130,4 +125,21 @@
   border-radius: 50%;
   background-color: red;
   color: white;
+}
+
+.searchIcon {
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  top: 40px;
+  right: -20px;
+}
+
+.rightContainer a {
+  margin-right: 20px;
 }

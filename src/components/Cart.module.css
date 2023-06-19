@@ -10,7 +10,6 @@
 
 .container {
   border: 1px solid #ccc;
-  margin-top: 15.6rem;
   background-color: var(--cart-background-color);
   color: var(--cart-color);
   transition: all 0.2s;
@@ -31,4 +30,20 @@
 
 .span {
   background-color: var(--cart-span-background-color);
+}
+
+@media (max-width: 1024px) {
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 60px;
+    margin-left: 110px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    margin-top: 250px;
+  }
 }

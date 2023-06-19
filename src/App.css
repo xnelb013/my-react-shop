@@ -10,9 +10,10 @@
   --content-background-color: rgb(42, 48, 58);
 }
 
-.testContainer {
+.mainContainer {
   padding-top: 100px;
   background-color: var(--content-background-color);
   min-height: calc(100vh - 200px);
+  min-width: 600px;
   flex-grow: 1;
 }

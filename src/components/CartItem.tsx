@@ -7,27 +7,27 @@ import { Link } from "react-router-dom";
 import { totalQuantityState } from "../store/cartStat";
 
 type CartItemType = {
-  id: number;
-  quantity: number;
+  readonly id: number;
+  readonly quantity: number;
 };
 
 type CartItemProps = {
-  id: number;
-  initialQuantity: number;
+  readonly id: number;
+  readonly initialQuantity: number;
   setCart: (cart: CartItemType[]) => void;
 };
 
 function CartItem({ id, initialQuantity, setCart }: CartItemProps) {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const productLoadable = useRecoilValueLoadable(fetchProductById(id));
   const setTotalQuantity = useSetRecoilState(totalQuantityState);
+  const productLoadable = useRecoilValueLoadable(fetchProductById(id));
 
   if (productLoadable.state === "loading") {
     return <SkeletonCart />;
   }
 
   if (productLoadable.state === "hasError") {
-    return <li>Error</li>;
+    return <li>상품을 불러오지 못했습니다.</li>;
   }
 
   const product = productLoadable.contents;
@@ -67,23 +67,21 @@ function CartItem({ id, initialQuantity, setCart }: CartItemProps) {
   }
 
   return (
-    <div className="mx-auto max-w-6xl justify-center px-6 md:flex md:space-x-6 xl:px-0 w-1000">
-      <div className={`rounded-lg md:w-2/3`}>
-        <div
-          className={`${styled.card} justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start`}
-        >
+    <div className={`${styled.cardWrap} mx-auto max-w-6xl justify-center px-6 md:flex md:space-x-6 xl:px-0`}>
+      <div className={`${styled.cardContainer} rounded-lg md:w-2/3 sm:w-2/3 w-2/3`}>
+        <div className={`${styled.card} mb-6 w-full rounded-lg bg-white p-6 shadow-md flex justify-start`}>
           <Link to={`/product/${product.id}`}>
-            <img src={product.image} alt="product-image" className="w-full rounded-lg sm:w-40" />
+            <img src={product.image} alt="product-image" className="rounded-lg w-40 h-40" />
           </Link>
-          <div className="sm:ml-10 sm:flex sm:w-full sm:justify-between">
-            <div className="mt-5 sm:mt-0">
+          <div className="ml-10 flex w-full justify-between">
+            <div className="mt-5 mt-0">
               <Link to={`/product/${product.id}`}>
                 <h2 className="text-lg font-bold">{product.title}</h2>
               </Link>
 
               <p className="mt-5 text-md ">${product.price}</p>
             </div>
-            <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+            <div className="mt-4 flex justify-between space-y-6 mt-0 block space-x-6">
               <div className="flex items-center border-gray-100 ml-10">
                 <span
                   className={`${styled.span} cursor-pointer rounded-l py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50`}

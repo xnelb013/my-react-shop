@@ -1,8 +1,8 @@
 import styled from "./Modal.module.css";
 
 type ModalProps = {
-  subtotal: number;
-  handlePurchase: () => void;
+  readonly subtotal: number;
+  readonly handlePurchase: () => void;
 };
 
 const Modal = ({ subtotal, handlePurchase }: ModalProps) => {

@@ -36,3 +36,13 @@
   padding: 10px 15px;
   font-size: 20px;
 }
+
+.cardWrap {
+  width: 1000px;
+}
+
+@media (max-width: 767px) {
+  .cardWrap {
+    width: 800px;
+  }
+}

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "./Navigation.module.css";
-import { BsFillBasket3Fill } from "react-icons/bs";
+import { BsFillBasket3Fill, BsSearch } from "react-icons/bs";
 import { atom, useRecoilState } from "recoil";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchInput from "./SearchInput";
 import { totalQuantityState } from "../store/cartStat";
 
@@ -14,6 +14,21 @@ const themeState = atom({
 const Navigation = () => {
   const [theme, setTheme] = useRecoilState(themeState);
   const [totalQuantity, setTotalQuantity] = useRecoilState(totalQuantityState);
+  const [showSearchInput, setShowSearchInput] = useState(false);
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: { target: any }) => {
+      if (!searchInputRef.current || !searchInputRef.current.contains(event.target)) {
+        setShowSearchInput(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchInputRef]);
 
   useEffect(() => {
     const storedValue = localStorage.getItem("cart");
@@ -43,8 +58,8 @@ const Navigation = () => {
   return (
     <div className={`${styled.navigation} navbar bg-base-300 mx-auto `}>
       <div className={styled.navbarWrap}>
-        <div className="navbar-start">
-          <div className="dropdown">
+        <div className="navbar-start flex pt-4">
+          <div className={`dropdown pb-2`}>
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,23 +92,23 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className={`${styled.logo} btn btn-ghost normal-case text-xl hidden lg:block`}>
+          <Link to="/" className={`${styled.logo} btn btn-ghost normal-case text-xl lg:block`}>
             ES Shop
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className={`menu menu-horizontal px-1`}>
-            <li className="mr-10">
+        <div className={`${styled.categoryContainer} navbar-center hidden md:flex`}>
+          <ul className={`menu menu-horizontal px-1 hidden lg:flex`}>
+            <li className="mr-3">
               <Link to="/fashion" className={styled.category}>
                 패션
               </Link>
             </li>
-            <li className="mr-10">
+            <li className="mr-3">
               <Link to="/accessories" className={styled.category}>
                 액세서리
               </Link>
             </li>
-            <li className="mr-10">
+            <li className="mr-3">
               <Link to="/digital" className={styled.category}>
                 디지털
               </Link>
@@ -101,7 +116,7 @@ const Navigation = () => {
           </ul>
         </div>
         <div className={styled.rightContainer}>
-          <label className={`${styled.themeBtn} swap swap-rotate mr-5`}>
+          <label className={`swap swap-rotate mr-5`}>
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" role="button" onClick={handleThemeToggle} />
 
@@ -115,16 +130,22 @@ const Navigation = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-          <div className="join mr-10">
-            <div>
-              <div>
-                <SearchInput />
-              </div>
+          <div className="join mr-10 relative">
+            <div className="hidden md:block">
+              <SearchInput ref={searchInputRef} />
             </div>
-            <div className="indicator">
-              <button className="btn join-item">Search</button>
+            <div className={`${styled.searchIcon} md:hidden`} onClick={() => setShowSearchInput(!showSearchInput)}>
+              <BsSearch />
+            </div>
+            <div className={styled.input}>
+              {showSearchInput && (
+                <div className="block md:hidden">
+                  <SearchInput ref={searchInputRef} />
+                </div>
+              )}
             </div>
           </div>
+
           <Link to="/cart" className={styled.cart}>
             <div className={styled.badge}>{totalQuantity}</div>
             <BsFillBasket3Fill />

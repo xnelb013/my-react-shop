@@ -25,10 +25,11 @@ const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
             {getCategoryTitle(category as keyof typeof Category)}
           </div>
           <div className={styled.listContainer}>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
+            {Array(4)
+              .fill(null)
+              .map((_, index) => (
+                <Skeleton key={index} />
+              ))}
           </div>
         </div>
       </>

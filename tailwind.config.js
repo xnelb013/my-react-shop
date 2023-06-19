@@ -19,6 +19,9 @@ export default {
     },
 
     extend: {
+      screens: {
+        xs: "475px",
+      },
       width: {
         1000: "1000px",
       },

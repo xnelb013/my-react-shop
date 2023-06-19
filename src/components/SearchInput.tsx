@@ -3,8 +3,9 @@ import { useRecoilValueLoadable } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { fetchProductsByCategory } from "../store/products";
 import styled from "./SearchInput.module.css";
+import React from "react";
 
-function SearchInput() {
+const SearchInput = React.forwardRef<HTMLInputElement>((props, ref) => {
   const [searchText, setSearchText] = useState("");
   const productsLoadable = useRecoilValueLoadable(fetchProductsByCategory({ category: "all" }));
   const products = productsLoadable.state === "hasValue" ? productsLoadable.contents : [];
@@ -17,10 +18,10 @@ function SearchInput() {
   };
 
   return (
-    <div className={styled.container}>
+    <div className={styled.container} ref={ref} {...props}>
       <input
         type="search"
-        className="input input-bordered join-item"
+        className="input input-bordered join-item lg:w-50"
         placeholder="Search..."
         onChange={(e) => setSearchText(e.target.value)}
       />
@@ -45,6 +46,6 @@ function SearchInput() {
       )}
     </div>
   );
-}
+});
 
 export default SearchInput;

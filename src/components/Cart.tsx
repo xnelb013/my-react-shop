@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import CartItem from "./CartItem";
 import { useRecoilValueLoadable } from "recoil";
 import { fetchProductsByCategory } from "../store/products";
 import styled from "./Cart.module.css";
 import Modal from "./Modal";
+import { SkeletonCart } from "./Skeleton";
 
 type CartItemType = {
   readonly id: number;
@@ -48,18 +49,21 @@ function Cart() {
 
   return (
     <div className={`${styled.fullContainer} flex justify-center`}>
-      <div className={`flex`}>
-        //장바구니 상품 여부확인
+      <div className={`${styled.cardContainer} flex`}>
         {cart.length === 0 ? (
           <p className="mt-60 mb-20 w-3/4">장바구니에 담은 상품이 없습니다.</p>
         ) : (
           <>
             <ul className="mt-60 mb-20 w-2/3">
-              {cart.map((item) => (
-                <CartItem key={item.id} id={item.id} initialQuantity={item.quantity} setCart={setCart} />
-              ))}
+              <Suspense fallback={<SkeletonCart />}>
+                {cart.map((item) => (
+                  <CartItem key={item.id} id={item.id} initialQuantity={item.quantity} setCart={setCart} />
+                ))}
+              </Suspense>
             </ul>
-            <div className={`${styled.container} h-60 rounded-lg border bg-white p-6 shadow-md md:mt-60 md:w-2/3`}>
+            <div
+              className={`${styled.container} h-60 rounded-lg border w-2/3 bg-white p-6 shadow-md md:w-2/3 sm:w-2/3 md:ml-40 lg:ml-10`}
+            >
               <div className="mb-2 flex justify-between">
                 <p className="">Subtotal</p>
                 <p className="">${subtotal.toFixed(2)}</p>

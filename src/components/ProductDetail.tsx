@@ -50,7 +50,7 @@ function ProductDetail() {
         <div className={`${styled.cardContainer} card lg:card-side bg-base-100 shadow-xl mt-80`}>
           <figure className="w-full relative">
             <div className={styled.imgContainer}>
-              <img src={product.image} alt="Album" className="object-contain h-96 w-full" />
+              <img src={product.image} alt="Album" className="object-contain lg:h-96 w-full h-40" />
             </div>
           </figure>
           <div className="card-body mb-15">
