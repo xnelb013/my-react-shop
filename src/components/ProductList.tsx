@@ -3,23 +3,15 @@ import { Link } from "react-router-dom";
 import styled from "./ProductList.module.css";
 import { Product, fetchProductsByCategory } from "../store/products";
 import { Skeleton } from "./Skeleton";
+import { Category, categoryType } from "../constant/constants";
 
 interface ProductsListProps {
-  readonly category: string;
+  readonly category: keyof typeof Category;
   readonly totalNumber?: number;
 }
 
-const getCategoryTitle = (category: string) => {
-  switch (category) {
-    case "men's clothing":
-      return "남성 패션";
-    case "women's clothing":
-      return "여성 패션";
-    case "jewelery":
-      return "쥬얼리";
-    default:
-      return "디지털";
-  }
+const getCategoryTitle = (category: keyof typeof Category): categoryType => {
+  return Category[category];
 };
 
 const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
@@ -30,13 +22,7 @@ const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
       <>
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className={`${styled.categoryTitle}  text-2xl font-bold tracking-tight text-gray-900`}>
-            {category === "men's clothing"
-              ? "남성 패션"
-              : category === "women's clothing"
-              ? "여성 패션"
-              : category === "jewelery"
-              ? "액세서리"
-              : "디지털"}
+            {getCategoryTitle(category as keyof typeof Category)}
           </div>
           <div className={styled.listContainer}>
             <Skeleton />
@@ -58,7 +44,9 @@ const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
   return (
     <>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div className={`${styled.categoryTitle} text-2xl font-bold tracking-tight`}>{getCategoryTitle(category)}</div>
+        <div className={`${styled.categoryTitle} text-2xl font-bold tracking-tight`}>
+          {getCategoryTitle(category as keyof typeof Category)}
+        </div>
         <div className={`mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8`}>
           {products.map((product) => (
             <Link to={`/product/${product.id}`} key={product.id}>

@@ -4,7 +4,7 @@ import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const images = ["/img/img1.jpeg", "/img/img2.jpeg", "/img/img3.jpeg"];
+const images = ["/img/캐러셀1.webp", "/img/캐러셀2.webp", "/img/캐러셀3.webp"];
 
 const Carousel = () => {
   const [translateValue, setTranslateValue] = useState(0);
@@ -48,8 +48,8 @@ const Carousel = () => {
             {index === 0 && (
               // 캐러셀의 오버레이
               <div className={styled.overlay}>
-                <h1>물빠진 청바지!</h1>
-                <p>이제 막 도착한 패션 청바지를 구경해 보세요.</p>
+                <h1>트렌드한 패션!</h1>
+                <p>ES Shop에서 준비한 아이템들을 확인해 보세요.</p>
                 <Link to={"/fashion"}>
                   <button>
                     <h2>바로가기</h2> <BsArrowRightCircleFill />
@@ -59,7 +59,7 @@ const Carousel = () => {
             )}
             {index === 1 && (
               <div className={styled.overlay}>
-                <h1>신속한 업무처리!</h1>
+                <h1>최신 디지털 상품!</h1>
                 <p>다양한 디지털 상품을 둘러보세요.</p>
                 <Link to={"/digital"}>
                   <button>
@@ -72,9 +72,11 @@ const Carousel = () => {
               <div className={styled.overlay}>
                 <h1>신선한 식품!</h1>
                 <p>농장 직배송으로 더욱 신선한 식료품을 만나보세요.</p>
-                <button>
-                  <h2>바로가기</h2> <BsArrowRightCircleFill />
-                </button>
+                <Link to={"/grocery"}>
+                  <button>
+                    <h2>바로가기</h2> <BsArrowRightCircleFill />
+                  </button>
+                </Link>
               </div>
             )}
           </div>
