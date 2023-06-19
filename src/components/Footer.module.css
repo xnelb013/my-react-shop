@@ -1,0 +1,151 @@
+:global(:root) {
+  --color-footer-background-color: rgb(201, 209, 226);
+  --color-footer-text-color: black;
+  --color-footer-linklogo-color: black;
+  --color-footer-bubble-color: #1f1d1d;
+  --color-footer-bubble-text-color: white;
+  --color-footer-card-icon: black;
+}
+
+:global([data-theme="dark"]) {
+  --color-footer-background-color: rgb(25, 29, 36);
+  --color-footer-text-color: rgb(166, 173, 187);
+  --color-footer-linklogo-color: white;
+  --color-footer-bubble-color: white;
+  --color-footer-bubble-text-color: rgb(134, 126, 126);
+  --color-footer-card-icon: white;
+}
+
+.footerContainer {
+  /* height: 300px; */
+  background: var(--color-footer-background-color);
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.35s; */
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-footer-text-color);
+  font-size: 14px;
+  margin-bottom: 30px;
+  transition: color 0.35s;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.flex li,
+.cardIcon {
+  display: inline-block;
+}
+
+.flex img,
+.cardIcon {
+  width: 38px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.linkContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 45px;
+  margin-bottom: 45px;
+  gap: 15px;
+}
+
+.linkContainer a {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.facebookLogo:hover::before,
+.instagramLogo:hover::before,
+.githubLogo:hover::before {
+  opacity: 1;
+}
+
+.facebookLogo::before,
+.instagramLogo::before,
+.githubLogo::before {
+  opacity: 0;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  max-width: 20rem;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.3s;
+
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  background-color: var(--color-footer-bubble-color);
+  color: var(--color-footer-bubble-text-color);
+  width: max-content;
+}
+
+.facebookLogo::before {
+  content: "facebook";
+}
+
+.instagramLogo::before {
+  content: "instagram";
+}
+
+.githubLogo::before {
+  content: "github";
+}
+
+.facebookLogo::after,
+.instagramLogo::after,
+.githubLogo::after {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  transition: all 0.3s;
+  border: 5px solid transparent;
+  border-top-color: var(--color-footer-bubble-color);
+}
+
+.facebookLogo:hover::after,
+.instagramLogo:hover::after,
+.githubLogo:hover::after {
+  opacity: 1;
+}
+
+.footerContainer p {
+  font-size: 14px;
+  color: var(--color-footer-text-color);
+  transition: color 0.35s;
+}
+
+.facebookImage,
+.instagramImage,
+.githubImage {
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+.facebookImage path,
+.instagramImage path,
+.githubImage path {
+  fill: var(--color-footer-linklogo-color);
+}
+
+.cardIcon path {
+  fill: var(--color-footer-card-icon);
+}

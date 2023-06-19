@@ -1,0 +1,46 @@
+:global(:root) {
+  --nfp-background-color: white;
+  --nfp-text-color: rgb(31, 41, 55);
+}
+
+:global([data-theme="dark"]) {
+  --nfp-background-color: #2a303c;
+  --nfp-text-color: #a6adbb;
+}
+
+.notFoundPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+  background-color: var(--nfp-background-color);
+  margin-top: 60px;
+  color: var(--nfp-text-color);
+  width: 100%;
+  height: 1000px;
+  transition: all 0.35s;
+}
+
+.text404 {
+  font-size: 8rem;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.goMainButton {
+  margin-top: 2rem;
+  width: 10rem;
+  height: 4rem;
+  background-color: #661ae6;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}

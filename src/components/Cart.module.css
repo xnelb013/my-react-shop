@@ -1,0 +1,34 @@
+:global(:root) {
+  --cart-background-color: white;
+  --cart-color: black;
+}
+
+:global([data-theme="dark"]) {
+  --cart-background-color: #e5e7eb;
+  --cart-color: rgb(119, 113, 113);
+}
+
+.container {
+  border: 1px solid #ccc;
+  margin-top: 15.6rem;
+  background-color: var(--cart-background-color);
+  color: var(--cart-color);
+  transition: all 0.2s;
+  min-width: 250px;
+  margin-right: 40px;
+}
+
+.container > :last-child {
+  color: initial;
+  background-color: initial;
+}
+
+.fullContainer {
+  margin: 0 auto;
+  min-width: 800px;
+  min-height: calc(100vh - 300px);
+}
+
+.span {
+  background-color: var(--cart-span-background-color);
+}

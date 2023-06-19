@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.itemList {
+  top: 1;
+  position: absolute;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #f3f4f6;
+}
