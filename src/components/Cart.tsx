@@ -23,7 +23,7 @@ function Cart() {
   }, []);
 
   if (productsLoadable.state === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (productsLoadable.state === "hasError") {
@@ -54,7 +54,7 @@ function Cart() {
           <p className="mt-60 mb-20 w-3/4">장바구니에 담은 상품이 없습니다.</p>
         ) : (
           <>
-            <ul className="mt-60 mb-20 w-2/3">
+            <ul className="mt-20 mb-20 w-2/3">
               <Suspense fallback={<SkeletonCart />}>
                 {cart.map((item) => (
                   <CartItem key={item.id} id={item.id} initialQuantity={item.quantity} setCart={setCart} />

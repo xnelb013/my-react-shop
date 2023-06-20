@@ -51,7 +51,7 @@ const Carousel = () => {
                 <h1>트렌드한 패션!</h1>
                 <p>ES Shop에서 준비한 아이템들을 확인해 보세요.</p>
                 <Link to={"/fashion"}>
-                  <button>
+                  <button aria-label="패션 카테고리로 이동">
                     <h2>바로가기</h2> <BsArrowRightCircleFill />
                   </button>
                 </Link>
@@ -62,7 +62,7 @@ const Carousel = () => {
                 <h1>최신 디지털 상품!</h1>
                 <p>다양한 디지털 상품을 둘러보세요.</p>
                 <Link to={"/digital"}>
-                  <button>
+                  <button aria-label="디지털 카테고리로 이동">
                     <h2>바로가기</h2> <BsArrowRightCircleFill />
                   </button>
                 </Link>
@@ -73,7 +73,7 @@ const Carousel = () => {
                 <h1>신선한 식품!</h1>
                 <p>농장 직배송으로 더욱 신선한 식료품을 만나보세요.</p>
                 <Link to={"/grocery"}>
-                  <button>
+                  <button aria-label="식품 카테고리로 이동">
                     <h2>바로가기</h2> <BsArrowRightCircleFill />
                   </button>
                 </Link>
@@ -82,10 +82,10 @@ const Carousel = () => {
           </div>
         ))}
       </div>
-      <button onClick={onClickPrevBtn} className={styled.prevBtn}>
+      <button onClick={onClickPrevBtn} className={styled.prevBtn} aria-label="캐러셀 이전 버튼">
         <AiFillCaretLeft />
       </button>
-      <button onClick={onClickNextBtn} className={styled.nextBtn}>
+      <button onClick={onClickNextBtn} className={styled.nextBtn} aria-label="캐러셀 다음 버튼">
         <AiFillCaretRight />
       </button>
       <div className={styled.dotContainer}>

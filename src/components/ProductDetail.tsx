@@ -5,6 +5,7 @@ import { fetchProductById } from "../store/products";
 import styled from "./ProductDetail.module.css";
 import { SkeletonDetail } from "./Skeleton";
 import Ratings from "./Ratings";
+import { CategoryEng } from "../constant/constants";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -45,10 +46,13 @@ function ProductDetail() {
   return (
     <>
       <div className={styled.wrap}>
-        <div className={`${styled.breadcrumbs} text-sm breadcrumbs`}>
+        <div className={`ml-10 text-sm breadcrumbs mb-20 overflow-x-hidden`}>
           <ul>
             <li>
-              <a>{product.category}</a>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={`/${CategoryEng[product.category]}`}>{product.category}</Link>
             </li>
             <li>{product.title}</li>
           </ul>

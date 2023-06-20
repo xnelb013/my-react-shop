@@ -53,7 +53,11 @@ const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
             <Link to={`/product/${product.id}`} key={product.id}>
               <div key={product.id} className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80 flex items-center justify-center">
-                  <img src={product.image} alt={product.title} className="h-52 w-52 object-contain object-center" />
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="h-52 w-52 object-contain object-center mw-full mh-full"
+                  />
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div className={styled.productTitle}>

@@ -1,5 +1,5 @@
 :global(:root) {
-  --color-footer-background-color: rgb(201, 209, 226);
+  --color-footer-background-color: #e6e0e0;
   --color-footer-text-color: black;
   --color-footer-linklogo-color: black;
   --color-footer-bubble-color: #1f1d1d;
