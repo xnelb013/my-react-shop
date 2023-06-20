@@ -92,7 +92,7 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className={`${styled.logo} btn btn-ghost normal-case text-xl lg:block`}>
+          <Link to="/" className={`${styled.logo} bg-base-300 btn normal-case text-xl lg:block`}>
             ES Shop
           </Link>
         </div>
