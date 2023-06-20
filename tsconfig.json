@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": false,
-    "esModuleInterop": false,
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ES2020",
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,11 +19,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "@floating-ui/core/*": ["node_modules/@floating-ui/core/src/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
