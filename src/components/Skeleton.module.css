@@ -61,3 +61,22 @@
   height: 200px;
   margin-right: 300px;
 }
+
+.DetailContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1600px;
+  margin-top: 200px;
+  height: 500px;
+  background-color: #ccc;
+}
+
+.DetailWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  height: 900px;
+  margin-left: 200px;
+}

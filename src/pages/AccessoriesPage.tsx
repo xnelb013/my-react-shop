@@ -2,7 +2,7 @@ import ProductsList from "../components/ProductList";
 
 const AccessoriesPage = () => {
   return (
-    <div className="testContainer">
+    <div className="mainContainer">
       <ProductsList category="jewelery" />
     </div>
   );

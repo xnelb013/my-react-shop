@@ -34,3 +34,27 @@ export const SkeletonCart = () => {
     </>
   );
 };
+
+export const SkeletonDetail = () => {
+  return (
+    <>
+      <div className={styled.DetailWrap}>
+        <div className={`${styled.DetailContainer} border border-blue-700 shadow rounded-md `}>
+          <div className="animate-pulse flex space-x-4">
+            <div className="rounded-full bg-slate-200 h-80 w-80 mr-20"></div>
+            <div className="flex-1 space-y-6 py-1 w-60 mt-20">
+              <div className="h-10 w-60 bg-slate-200 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-8">
+                  <div className="h-10 w-80 bg-slate-200 rounded col-span-2"></div>
+                  <div className="h-10 w-40 bg-slate-200 rounded col-span-1"></div>
+                </div>
+                <div className="h-10 w-60 bg-slate-200 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

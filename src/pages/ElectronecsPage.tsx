@@ -2,7 +2,7 @@ import ProductsList from "../components/ProductList";
 
 const DigitalPage = () => {
   return (
-    <div className="testContainer">
+    <div className="mainContainer">
       <ProductsList category="electronics" />
     </div>
   );

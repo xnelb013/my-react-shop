@@ -13,6 +13,7 @@
   position: relative;
   height: 700px;
   width: 100%;
+  min-width: 800px;
   overflow: hidden;
 }
 .CarouselContainer img {

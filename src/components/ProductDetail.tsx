@@ -3,6 +3,8 @@ import { totalQuantityState } from "../store/cartStat";
 import { Link, useParams } from "react-router-dom";
 import { fetchProductById } from "../store/products";
 import styled from "./ProductDetail.module.css";
+import { SkeletonDetail } from "./Skeleton";
+import Ratings from "./Ratings";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -10,7 +12,11 @@ function ProductDetail() {
   const productLoadable = useRecoilValueLoadable(fetchProductById(Number(id)));
 
   if (productLoadable.state === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <SkeletonDetail />
+      </div>
+    );
   }
 
   if (productLoadable.state === "hasError") {
@@ -50,74 +56,14 @@ function ProductDetail() {
         <div className={`${styled.cardContainer} card lg:card-side bg-base-100 shadow-xl mt-80`}>
           <figure className="w-full relative">
             <div className={styled.imgContainer}>
-              <img src={product.image} alt="Album" className="object-contain lg:h-96 w-full h-40" />
+              <img src={product.image} alt={product.title} className="object-contain lg:h-96 w-full h-40" />
             </div>
           </figure>
           <div className="card-body mb-15">
             <h2 className={`${styled.title} card-title`}>{product.title}</h2>
             <div className={`${styled.cardDes} text-sm h-auto!`}>{product.description}</div>
             <div className={`${styled.rating} rating rating-md rating-half`}>
-              <input type="radio" name="rating-10" className="rating-hidden" />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-1"
-                defaultChecked={checkedIndex === 1}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-2"
-                defaultChecked={checkedIndex === 2}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-1"
-                defaultChecked={checkedIndex === 3}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-2"
-                defaultChecked={checkedIndex === 4}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-1"
-                defaultChecked={checkedIndex === 5}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-2"
-                defaultChecked={checkedIndex === 6}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-1"
-                defaultChecked={checkedIndex === 7}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-2"
-                defaultChecked={checkedIndex === 8}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-1"
-                defaultChecked={checkedIndex === 9}
-              />
-              <input
-                type="radio"
-                name="rating-10"
-                className="bg-orange-400 mask mask-star-2 mask-half-2 mr-2"
-                defaultChecked={checkedIndex === 10}
-              />
+              <Ratings checkedIndex={checkedIndex} />
               <div className={`${styled.ratingNumber} pt-2`}>
                 {product.rating.rate} / {product.rating.count} 참여
               </div>
