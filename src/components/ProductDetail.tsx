@@ -7,11 +7,13 @@ import { SkeletonDetail } from "./Skeleton";
 import Ratings from "./Ratings";
 import { CategoryEng } from "../constant/constants";
 
+// product detail page
 function ProductDetail() {
   const { id } = useParams();
   const [totalQuantity, setTotalQuantity] = useRecoilState(totalQuantityState);
   const productLoadable = useRecoilValueLoadable(fetchProductById(Number(id)));
 
+  // 로딩 중 나타날 스켈레톤
   if (productLoadable.state === "loading") {
     return (
       <div>
@@ -38,7 +40,6 @@ function ProductDetail() {
     } else {
       cart.push({ id: product.id, quantity: 1 });
     }
-
     localStorage.setItem("cart", JSON.stringify(cart));
     setTotalQuantity(totalQuantity + 1);
   };

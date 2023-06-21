@@ -16,11 +16,13 @@ type CartItemProps = {
   setCart: (cart: CartItemType[]) => void;
 };
 
+// 장바구니 상품 리스트
 function CartItem({ id, initialQuantity, setCart }: CartItemProps) {
   const [quantity, setQuantity] = useState(initialQuantity);
   const setTotalQuantity = useSetRecoilState(totalQuantityState);
   const product = useRecoilValue(fetchProductById(id));
 
+  // cart 상태 업데이트 및 총 수량 업데이트
   const updateCart = async (newQuantity: number) => {
     const cartString = await localStorage.getItem("cart");
     const cart = cartString ? JSON.parse(cartString) : [];

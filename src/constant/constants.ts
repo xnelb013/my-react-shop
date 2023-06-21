@@ -1,3 +1,4 @@
+// 카테고리
 export const Category = {
   "men's clothing": "남성 패션",
   "women's clothing": "여성 패션",

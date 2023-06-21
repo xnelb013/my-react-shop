@@ -1,12 +1,15 @@
 import { selectorFamily } from "recoil";
 
+// API
 const FAKE_STORE_API = "https://fakestoreapi.com";
 
+// 별점 인터페이스
 interface Rating {
   readonly rate: number;
   readonly count: number;
 }
 
+// 상품 인터페이스
 export interface Product {
   readonly id: number;
   readonly title: string;
@@ -18,6 +21,7 @@ export interface Product {
   readonly count: number;
 }
 
+//fetch를 이용하여 데이터를 받아옴. 20초가 지나면 요청을 취소
 const fetchWithTimeout = async (url: string, options: RequestInit = {}, timeout = 20000) => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
@@ -28,6 +32,7 @@ const fetchWithTimeout = async (url: string, options: RequestInit = {}, timeout 
   return response;
 };
 
+// 카테고리 비교 fetch
 export const fetchProductsByCategory = selectorFamily<Product[], { category: string; limit?: number }>({
   key: "productsList",
   get:
@@ -45,6 +50,7 @@ export const fetchProductsByCategory = selectorFamily<Product[], { category: str
     },
 });
 
+// 아이디 비교 fetch
 export const fetchProductById = selectorFamily<Product, number>({
   key: "product",
   get: (id) => async () => {

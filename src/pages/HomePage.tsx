@@ -1,6 +1,7 @@
 import Carousel from "../components/Carousel";
 import ProductsList from "../components/ProductList";
 
+// 메인 페이지
 const HomePage = () => {
   return (
     <>

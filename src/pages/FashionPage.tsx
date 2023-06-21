@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductsList from "../components/ProductList";
 
+// 카테고리-패션 페이지
 const FashionPage = () => {
   return (
     <>

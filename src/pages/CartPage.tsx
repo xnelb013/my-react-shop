@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Cart from "../components/Cart";
 
+// 카트(장바구니) 페이지
 const CartPage = () => {
   return (
     <>

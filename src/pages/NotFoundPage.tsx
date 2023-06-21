@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "./NotFoundPage.module.css";
 
+// 없는 페이지 시 나올 페이지
 const NotFoundPage = () => {
   return (
     <div className={styled.notFoundPageContainer}>

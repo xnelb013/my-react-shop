@@ -14,9 +14,11 @@ const getCategoryTitle = (category: keyof typeof Category): categoryType => {
   return Category[category];
 };
 
+// 상품 리스트 표시
 const ProductsList = ({ category, totalNumber }: ProductsListProps) => {
   const productsLoadable = useRecoilValueLoadable<Product[]>(fetchProductsByCategory({ category, limit: totalNumber }));
 
+  // 로딩 중 표시될 스켈레톤ui
   if (productsLoadable.state === "loading") {
     return (
       <>

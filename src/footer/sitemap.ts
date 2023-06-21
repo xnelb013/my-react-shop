@@ -1,3 +1,4 @@
+// footer에 들어갈 정보들
 export const SITEMAP = [
   {
     title: "Company",

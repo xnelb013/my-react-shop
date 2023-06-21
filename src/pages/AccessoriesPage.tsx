@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 
 const ProductsList = lazy(() => import("../components/ProductList"));
 
+// 카테고리-악세서리 페이지
 const AccessoriesPage = () => {
   return (
     <>

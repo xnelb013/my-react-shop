@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import SearchInput from "./SearchInput";
 import { totalQuantityState } from "../store/cartStat";
 
+// 테마 스테이트
 const themeState = atom({
   key: "themeState",
   default: localStorage.getItem("theme") || "light",
@@ -18,6 +19,7 @@ const Navigation = () => {
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  //감색 창의 리스트가 나타나 있을 때 다른 곳 클릭하면 리스트 숨기기
   useEffect(() => {
     const handleClickOutside = (event: { target: any }) => {
       if (!searchInputRef.current || !searchInputRef.current.contains(event.target)) {
@@ -30,6 +32,7 @@ const Navigation = () => {
     };
   }, [searchInputRef]);
 
+  //badge의 개수 표시를 위해 cart안에 담겨있는 총 합 업데이트 및 계산
   useEffect(() => {
     const storedValue = localStorage.getItem("cart");
     if (storedValue !== null) {
@@ -39,6 +42,7 @@ const Navigation = () => {
     }
   }, [setTotalQuantity]);
 
+  // localStorage에서 테마 가져와 테마 업데이트
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
@@ -46,11 +50,13 @@ const Navigation = () => {
     }
   }, [setTheme]);
 
+  // 테마 업데이트
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
+  // 테마 버튼 클릭시
   const handleThemeToggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };

@@ -5,14 +5,17 @@ import { fetchProductsByCategory } from "../store/products";
 import styled from "./SearchInput.module.css";
 import React from "react";
 
+// 상품 검색 컴포넌트
 const SearchInput = React.forwardRef<HTMLInputElement>((props, ref) => {
   const [searchText, setSearchText] = useState("");
   const productsLoadable = useRecoilValueLoadable(fetchProductsByCategory({ category: "all" }));
   const products = productsLoadable.state === "hasValue" ? productsLoadable.contents : [];
   const navigate = useNavigate();
 
+  // 소문자 변환
   const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchText.toLowerCase()));
 
+  // 클릭시 해당 상품 상세페이지로 이동
   const handleProductClick = (id: number) => {
     navigate(`/product/${id}`);
   };

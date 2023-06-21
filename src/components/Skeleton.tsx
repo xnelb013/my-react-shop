@@ -1,5 +1,5 @@
 import styled from "./Skeleton.module.css";
-
+// 스켈레톤 모음
 export const Skeleton = () => {
   return (
     <div className={styled.skeleton}>

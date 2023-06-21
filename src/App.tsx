@@ -3,12 +3,12 @@ import { Suspense, lazy } from "react";
 import "./App.css";
 import Layout from "./Layout";
 import ScrollToTop from "./components/ScrollToTop";
-const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const ProductDetail = lazy(() => import("./components/ProductDetail"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 const FashionPage = lazy(() => import("./pages/FashionPage"));
 const AccessoriesPage = lazy(() => import("./pages/AccessoriesPage"));
-const DigitalPage = lazy(() => import("./pages/ElectronecsPage"));
+const DigitalPage = lazy(() => import("./pages/DigitalPage"));
 const CartPage = lazy(() => import("./pages/CartPage"));
 
 function App() {

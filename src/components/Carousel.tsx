@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 
 const images = ["/img/캐러셀1.webp", "/img/캐러셀2.webp", "/img/캐러셀3.webp"];
 
+//캐러셀 페이지 (직접구현)
 const Carousel = () => {
+  // 위치를 변환시킬 state
   const [translateValue, setTranslateValue] = useState(0);
 
   // 이전 버튼
@@ -88,6 +90,7 @@ const Carousel = () => {
       <button onClick={onClickNextBtn} className={styled.nextBtn} aria-label="캐러셀 다음 버튼">
         <AiFillCaretRight />
       </button>
+      {/* 캐러셀 안 . . . 부분 */}
       <div className={styled.dotContainer}>
         <div
           className={`${styled.dot} ${translateValue === 0 ? styled.active : ""}`}

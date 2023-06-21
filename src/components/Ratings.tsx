@@ -2,6 +2,7 @@ interface RatingProps {
   readonly checkedIndex: number;
 }
 
+// 코드 가독성을 위해 별점 부분 따로 뺌
 const Ratings = ({ checkedIndex }: RatingProps) => {
   return (
     <>

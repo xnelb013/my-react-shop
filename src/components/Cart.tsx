@@ -12,10 +12,11 @@ type CartItemType = {
   readonly quantity: number;
 };
 
+// 장바구니 로직
 function Cart() {
   const [cart, setCart] = useState<CartItemType[]>([]);
   const products = useRecoilValue(fetchProductsByCategory({ category: "all" }));
-
+  // localStroge 안 cart 키에 저장된 값을 가져옴
   useEffect(() => {
     const getCart = async () => {
       const cartString = await localStorage.getItem("cart");
@@ -25,6 +26,7 @@ function Cart() {
     getCart();
   }, []);
 
+  // 가격 총 합 계산
   const calculateSubtotal = () => {
     const productsMap = products.reduce((acc: { [key: number]: number }, product: { id: number; price: number }) => {
       acc[product.id] = product.price;
@@ -37,6 +39,7 @@ function Cart() {
 
   const subtotal = calculateSubtotal();
 
+  // 구매 버튼 클릭 시 LS 초기화
   const handlePurchase = () => {
     localStorage.removeItem("cart");
     setCart([]);

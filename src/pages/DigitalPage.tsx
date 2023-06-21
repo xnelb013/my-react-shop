@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductsList from "../components/ProductList";
 
+// 카테고리-디지털 페이지
 const DigitalPage = () => {
   return (
     <>

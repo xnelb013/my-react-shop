@@ -5,6 +5,7 @@ type ModalProps = {
   readonly handlePurchase: () => void;
 };
 
+// cart페이지에서 구매 클릭시 나타날 모달
 const Modal = ({ subtotal, handlePurchase }: ModalProps) => {
   return (
     <>

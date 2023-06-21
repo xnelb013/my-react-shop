@@ -2,6 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import styled from "./Footer.module.css";
 import { SITEMAP } from "../footer/sitemap";
 
+// 페이지 하단 부분, 현재 링크들은 전부 임시로 # 처리 했습니다.
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
