@@ -58,8 +58,8 @@ function Cart() {
               <Suspense
                 fallback={
                   <>
-                    {Array.from({ length: cart.length }, () => (
-                      <SkeletonCart />
+                    {Array.from({ length: cart.length }, (_, index) => (
+                      <SkeletonCart key={index} />
                     ))}
                   </>
                 }

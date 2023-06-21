@@ -92,7 +92,7 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className={`${styled.logo}`}>
+          <Link to="/" className={styled.logoContainer}>
             <div className={styled.logoTitle}>ES Shop</div>
           </Link>
         </div>

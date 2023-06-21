@@ -38,6 +38,22 @@
   transition: color 0.35s;
 }
 
+.logoContainer {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .logoTitle {
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .categoryContainer {
   display: flex;
 }
