@@ -5,6 +5,7 @@ import { fetchProductsByCategory } from "../store/products";
 import styled from "./Cart.module.css";
 import Modal from "./Modal";
 import { SkeletonCart } from "./Skeleton";
+import { Link } from "react-router-dom";
 
 type CartItemType = {
   readonly id: number;
@@ -45,7 +46,12 @@ function Cart() {
     <div className={`${styled.fullContainer} flex justify-center`}>
       <div className={`${styled.cardContainer} flex`}>
         {cart.length === 0 ? (
-          <p className="mt-60 mb-20 w-3/4">장바구니에 담은 상품이 없습니다.</p>
+          <div className={styled.noCartDiv}>
+            <p className={`${styled.noCart} mt-60 mb-20 w-full`}>장바구니에 담은 상품이 없습니다.</p>
+            <Link to={"/"}>
+              <button className="btn w-1/4 text-lg">쇼핑하러 가기</button>
+            </Link>
+          </div>
         ) : (
           <>
             <ul className="mt-20 mb-20 w-2/3">

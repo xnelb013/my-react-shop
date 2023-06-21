@@ -28,11 +28,14 @@
   z-index: 9999;
 }
 
-.logo {
-  font-weight: 700;
+.logoTitle {
   font-size: 1.5rem;
-  width: 140px;
+  width: 150px;
   height: 40px;
+  font-weight: 700;
+  display: flex;
+  padding-left: 20px;
+  transition: color 0.35s;
 }
 
 .categoryContainer {

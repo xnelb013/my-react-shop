@@ -14,5 +14,7 @@
   background-color: var(--content-background-color);
   min-height: calc(100vh - 200px);
   min-width: 600px;
+  max-width: 1600px;
+  margin: 0 auto;
   flex-grow: 1;
 }

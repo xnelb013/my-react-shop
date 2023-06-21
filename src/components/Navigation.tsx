@@ -92,8 +92,8 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className={`${styled.logo} bg-base-300 btn normal-case text-xl lg:block`}>
-            ES Shop
+          <Link to="/" className={`${styled.logo}`}>
+            <div className={styled.logoTitle}>ES Shop</div>
           </Link>
         </div>
         <div className={`${styled.categoryContainer} navbar-center hidden md:flex`}>

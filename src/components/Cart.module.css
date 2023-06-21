@@ -28,6 +28,16 @@
   background-color: initial;
 }
 
+.noCartDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.noCart {
+  font-size: 60px;
+  font-weight: 700;
+}
+
 @media (max-width: 1024px) {
   .cardContainer {
     display: flex;
