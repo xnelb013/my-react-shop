@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import ProductsList from "../components/ProductList";
+import { Suspense, lazy } from "react";
+
+const ProductsList = lazy(() => import("../components/ProductList"));
 
 const AccessoriesPage = () => {
   return (
@@ -13,7 +15,9 @@ const AccessoriesPage = () => {
         </ul>
       </div>
       <div className="mainContainer">
-        <ProductsList category="jewelery" />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductsList category="jewelery" />
+        </Suspense>
       </div>
     </>
   );

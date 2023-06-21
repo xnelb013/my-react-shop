@@ -8,10 +8,6 @@
   min-width: 700px;
 }
 
-.cardTitle {
-  font-size: 60px;
-}
-
 .cardDes {
   margin-top: 20px;
 }
@@ -24,13 +20,6 @@
 
 .imgContainer {
   margin-left: 10px;
-}
-
-.breadcrumbs {
-  margin-top: 7rem;
-  z-index: 999;
-  overflow-x: hidden;
-  margin-left: 40px;
 }
 
 .wrap {

@@ -1,6 +1,6 @@
 import { useEffect, useState, Suspense } from "react";
 import CartItem from "./CartItem";
-import { useRecoilValueLoadable } from "recoil";
+import { useRecoilValue } from "recoil";
 import { fetchProductsByCategory } from "../store/products";
 import styled from "./Cart.module.css";
 import Modal from "./Modal";
@@ -13,30 +13,24 @@ type CartItemType = {
 
 function Cart() {
   const [cart, setCart] = useState<CartItemType[]>([]);
-  const productsLoadable = useRecoilValueLoadable(fetchProductsByCategory({ category: "all" }));
-  const products = productsLoadable.contents;
+  const products = useRecoilValue(fetchProductsByCategory({ category: "all" }));
 
   useEffect(() => {
-    const cartString = localStorage.getItem("cart");
-    const cart = cartString ? JSON.parse(cartString) : [];
-    setCart(cart);
+    const getCart = async () => {
+      const cartString = await localStorage.getItem("cart");
+      const cart = cartString ? JSON.parse(cartString) : [];
+      setCart(cart);
+    };
+    getCart();
   }, []);
 
-  if (productsLoadable.state === "loading") {
-    return <div></div>;
-  }
-
-  if (productsLoadable.state === "hasError") {
-    return <div>Error</div>;
-  }
-
   const calculateSubtotal = () => {
-    return cart.reduce((acc, item) => {
-      const product = products.find((product: { id: number }) => product.id === item.id);
-      if (product) {
-        return acc + product.price * item.quantity;
-      }
+    const productsMap = products.reduce((acc: { [key: number]: number }, product: { id: number; price: number }) => {
+      acc[product.id] = product.price;
       return acc;
+    }, {});
+    return cart.reduce((acc, item) => {
+      return acc + (productsMap[item.id] || 0) * item.quantity;
     }, 0);
   };
 
@@ -55,7 +49,15 @@ function Cart() {
         ) : (
           <>
             <ul className="mt-20 mb-20 w-2/3">
-              <Suspense fallback={<SkeletonCart />}>
+              <Suspense
+                fallback={
+                  <>
+                    {Array.from({ length: cart.length }, () => (
+                      <SkeletonCart />
+                    ))}
+                  </>
+                }
+              >
                 {cart.map((item) => (
                   <CartItem key={item.id} id={item.id} initialQuantity={item.quantity} setCart={setCart} />
                 ))}

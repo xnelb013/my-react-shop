@@ -8,6 +8,12 @@
   --cart-color: rgb(119, 113, 113);
 }
 
+.fullContainer {
+  margin: 0 auto;
+  min-width: 800px;
+  min-height: calc(100vh - 300px);
+}
+
 .container {
   border: 1px solid #ccc;
   background-color: var(--cart-background-color);
@@ -20,16 +26,6 @@
 .container > :last-child {
   color: initial;
   background-color: initial;
-}
-
-.fullContainer {
-  margin: 0 auto;
-  min-width: 800px;
-  min-height: calc(100vh - 300px);
-}
-
-.span {
-  background-color: var(--cart-span-background-color);
 }
 
 @media (max-width: 1024px) {

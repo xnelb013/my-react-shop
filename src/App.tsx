@@ -14,7 +14,7 @@ const CartPage = lazy(() => import("./pages/CartPage"));
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div></div>}>
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />

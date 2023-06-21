@@ -30,17 +30,3 @@
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
-
-.goMainButton {
-  margin-top: 2rem;
-  width: 10rem;
-  height: 4rem;
-  background-color: #661ae6;
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-}

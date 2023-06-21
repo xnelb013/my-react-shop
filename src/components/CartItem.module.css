@@ -12,11 +12,6 @@
   --cart-span-background-color: rgb(119, 113, 113);
 }
 
-.container {
-  min-height: calc(100vh - 300px);
-  display: flex;
-}
-
 .card {
   height: 300px;
   display: flex;

@@ -1,8 +1,7 @@
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { fetchProductById } from "../store/products";
 import styled from "./CartItem.module.css";
 import { useState } from "react";
-import { SkeletonCart } from "./Skeleton";
 import { Link } from "react-router-dom";
 import { totalQuantityState } from "../store/cartStat";
 
@@ -20,20 +19,10 @@ type CartItemProps = {
 function CartItem({ id, initialQuantity, setCart }: CartItemProps) {
   const [quantity, setQuantity] = useState(initialQuantity);
   const setTotalQuantity = useSetRecoilState(totalQuantityState);
-  const productLoadable = useRecoilValueLoadable(fetchProductById(id));
+  const product = useRecoilValue(fetchProductById(id));
 
-  if (productLoadable.state === "loading") {
-    return <SkeletonCart />;
-  }
-
-  if (productLoadable.state === "hasError") {
-    return <li>상품을 불러오지 못했습니다.</li>;
-  }
-
-  const product = productLoadable.contents;
-
-  const updateCart = (newQuantity: number) => {
-    const cartString = localStorage.getItem("cart");
+  const updateCart = async (newQuantity: number) => {
+    const cartString = await localStorage.getItem("cart");
     const cart = cartString ? JSON.parse(cartString) : [];
     const itemIndex = cart.findIndex((item: { id: number }) => item.id === id);
     if (itemIndex !== -1) {
@@ -44,7 +33,7 @@ function CartItem({ id, initialQuantity, setCart }: CartItemProps) {
         cart.splice(itemIndex, 1);
         setQuantity(0);
       }
-      localStorage.setItem("cart", JSON.stringify(cart));
+      await localStorage.setItem("cart", JSON.stringify(cart));
       setCart(cart);
       setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + newQuantity - quantity);
     }

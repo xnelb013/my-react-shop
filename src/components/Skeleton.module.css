@@ -56,10 +56,9 @@
 }
 
 .CartContainer {
-  margin-top: 20px;
-  width: 1000px;
+  width: 1200px;
   height: 200px;
-  margin-right: 300px;
+  margin: 100px 300px;
 }
 
 .DetailContainer {
