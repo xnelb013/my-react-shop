@@ -9,12 +9,14 @@
 }
 
 .CarouselContainer {
+  margin: 0 auto;
   margin-top: 60px;
   position: relative;
   height: 700px;
   width: 100%;
   min-width: 800px;
   overflow: hidden;
+  max-width: 2400px;
 }
 .CarouselContainer img {
   height: 700px;
