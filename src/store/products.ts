@@ -17,6 +17,7 @@ export interface Product {
   readonly rating: Rating;
   readonly count: number;
 }
+
 const fetchWithTimeout = async (url: string, options: RequestInit = {}, timeout = 20000) => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
