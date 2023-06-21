@@ -1,11 +1,12 @@
 import { useEffect, useState, Suspense } from "react";
 import CartItem from "./CartItem";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { fetchProductsByCategory } from "../store/products";
 import styled from "./Cart.module.css";
 import Modal from "./Modal";
 import { SkeletonCart } from "./Skeleton";
 import { Link } from "react-router-dom";
+import { totalQuantityState } from "../store/cartStat";
 
 type CartItemType = {
   readonly id: number;
@@ -15,6 +16,7 @@ type CartItemType = {
 // 장바구니 로직
 function Cart() {
   const [cart, setCart] = useState<CartItemType[]>([]);
+  const [, setTotalQuantity] = useRecoilState(totalQuantityState);
   const products = useRecoilValue(fetchProductsByCategory({ category: "all" }));
   // localStroge 안 cart 키에 저장된 값을 가져옴
   useEffect(() => {
@@ -43,6 +45,7 @@ function Cart() {
   const handlePurchase = () => {
     localStorage.removeItem("cart");
     setCart([]);
+    setTotalQuantity(0);
   };
 
   return (
